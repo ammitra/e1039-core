@@ -38,7 +38,7 @@ cd ../../
 pwd
 
 cd HitEmbedding
-sed "s@XXX@$PWD@g" /work/submit/wmccorma/DQ_Embed/setup_my1039_tmpHitEmbed.sh > setup_my1039.sh
+sed "s@XXX@$PWD@g" /work/submit/wmccorma/DQ_Embed_v2/setup_my1039_tmpHitEmbed.sh > setup_my1039.sh
 source setup_my1039.sh
 cmake-this
 make-this

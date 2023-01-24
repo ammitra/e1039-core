@@ -439,16 +439,22 @@ int SQReco::process_event(PHCompositeNode* topNode)
     if(is_eval_dst_enabled()) _tracklet_vector->push_back(&(*iter));
     ++nTracklets;
   }
+
+  //std::cout<<"finish loop over rectracks?"<<std::endl;
   
   std::sort (temporarySTracks.begin(), temporarySTracks.end(), compRecTrack);
   for(unsigned int st = 0; st<temporarySTracks.size(); st++){
     fillRecTrack(temporarySTracks.at(st));
   }
 
+  //std::cout<<"did i make it past fillRecTrack?"<<std::endl;
+  
   //>>>>>>>>>>>>>>>>>PARITCLE ID
   ParticleID();
   //<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+  //std::cout<<"did i make it past ParticleID?"<<std::endl;
+  
   //Loop over hit vector
   // for (int ihit = 0; ihit < _hit_vector->size(); ++ihit) {
   //   SQHit* hit = _hit_vector->at(ihit);
@@ -517,7 +523,8 @@ int SQReco::process_event(PHCompositeNode* topNode)
     }
   }
 
-
+  //std::cout<<"did i make it past fillRecSt3Track?"<<std::endl;
+  
   //add additional eval information if applicable
   if(is_eval_enabled() || is_eval_dst_enabled())
   {
@@ -544,6 +551,7 @@ int SQReco::process_event(PHCompositeNode* topNode)
 
   ++_event;
   //std::cout<<"++evented"<<std::endl;
+  
   return Fun4AllReturnCodes::EVENT_OK;
 }
 
@@ -775,7 +783,7 @@ bool SQReco::fitTrackCand(Tracklet& tracklet, SQGenFit::GFFitter* fitter)
   strack.setNHitsInPT(tracklet.seg_x.getNHits(), tracklet.seg_y.getNHits());
   strack.setPTSlope(tracklet.seg_x.a, tracklet.seg_y.a);
 
-  std::cout<<"where am i? "<<tracklet.vtxHypos.size()<<std::endl;
+  //std::cout<<"where am i? "<<tracklet.vtxHypos.size()<<std::endl;
   if(tracklet.vtxHypos.size()>0){
     //strack.setVtxHypos(tracklet.vtxHypos);
     for(unsigned int h = 0; h < tracklet.vtxHypos.size(); h++){
@@ -785,10 +793,10 @@ bool SQReco::fitTrackCand(Tracklet& tracklet, SQGenFit::GFFitter* fitter)
   }
   
   LogDebug("turns out i'm dong gfitting?  about to fill rectrack.  chisq = "<<strack.getChisq());
-  std::cout<<"pushback"<<std::endl;
+  //std::cout<<"pushback"<<std::endl;
   temporarySTracks.push_back(strack);
   //fillRecTrack(strack);
-  std::cout<<"pushedback"<<std::endl;
+  //std::cout<<"pushedback"<<std::endl;
   
   return true;
 }

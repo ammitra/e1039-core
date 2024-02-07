@@ -41,3 +41,20 @@ cd ../../
 pwd
 ```
 
+# Usage:
+
+* Every time you log on to `spinquestgpvm01`:
+```
+source <path to top directory>/e1039-core/DarkQuest/e1039-analysis/SimHits/setup_mye1039.sh
+```
+* If you change the core code (mostly tracking code, located under `<path to top directory>/e1039-core/packages/reco/ktracker/`) and want to re-compile:
+```
+cd <path to top directory>/e1039-core/
+./build.sh -s packages/reco/ktracker
+```
+* If you change something in the ntuple-making code (located under `<path to top directory>/e1039-core/DarkQuest/e1039-analysis/SimHits/src/`) and want to re-compile:
+```
+cd <path to top directory>/e1039-core/DarkQuest/e1039-analysis/SimHits/work/
+make
+make install
+```

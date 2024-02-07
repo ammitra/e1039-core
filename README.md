@@ -1,4 +1,4 @@
-# Fun4All based E1039 core software
+# Fun4All based E1039 core software 
 
 When you are looking for the information on the classes of this package, you could refer to the doxygen page [here](https://e1039-collaboration.github.io/e1039-doc/index.html) hosted by GitHub Pages.
 
